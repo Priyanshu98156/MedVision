@@ -79,24 +79,25 @@ The model identifies and classifies brain MRI scans into four distinct categorie
        │
        ▼
 [Streamlit Interface] ──► [Real-Time Visual Diagnostics & Report]
+```
 
-🧰 Tech Stack
-Primary Language: Python
+---
 
-Deep Learning Framework: TensorFlow / Keras
+## 🧰 Tech Stack
 
-Computer Vision & Image Processing: OpenCV, PIL (Pillow)
+- **Primary Language:** Python
+- **Deep Learning Framework:** TensorFlow / Keras
+- **Computer Vision & Image Processing:** OpenCV, PIL (Pillow)
+- **Data Manipulation & Scientific Computing:** NumPy, Pandas
+- **Visualization:** Matplotlib, Seaborn, Plotly
+- **Web Application Framework:** Streamlit
+- **Evaluation & Metrics:** Scikit-learn
 
-Data Manipulation & Scientific Computing: NumPy, Pandas
+---
 
-Visualization: Matplotlib, Seaborn, Plotly
+## 📂 Project Directory Structure
 
-Web Application Framework: Streamlit
-
-Evaluation & Metrics: Scikit-learn
-
-📂 Project Directory Structure
-
+```text
 MedVision/
 ├── data/
 │   ├── raw/                   # Raw MRI image datasets
@@ -118,3 +119,117 @@ MedVision/
 ├── .gitignore                 # Git ignore configuration
 ├── LICENSE                    # Project license (MIT)
 └── README.md                  # Project documentation
+```
+
+---
+
+## 🔬 Data Preprocessing & Augmentation
+
+Raw MRI scans often contain non-brain artifacts (skull regions, background black space, labels). MedVision applies a standardized preprocessing pipeline:
+
+- **Extreme Contour Cropping:** Finds the largest continuous contour in the thresholded grayscale image to isolate the brain region.
+- **Resizing:** Converts input scans to a uniform dimension ($224 \times 224 \times 3$).
+- **Normalization:** Scales pixel values from $[0, 255]$ to $[0, 1]$.
+- **Data Augmentation:** Applies random rotations, horizontal/vertical flips, and zoom variations during training to generalize across scan orientations.
+
+---
+
+## 📊 Model Performance & Evaluation
+
+The network was trained and evaluated on benchmark Brain Tumor MRI classification datasets:
+
+- **Overall Accuracy:** >90% on validation and holdout test splits
+- **Loss Function:** Categorical Cross-Entropy
+- **Optimizer:** Adam (Adaptive Moment Estimation)
+- **Diagnostic Metrics Tracked:** Precision, Recall, and F1-Score per class, alongside Confusion Matrix analysis for false negative minimization.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.9 or higher
+- Git
+- Virtual environment manager (`venv` or `conda`)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Priyanshu98156/MedVision.git
+   cd MedVision
+   ```
+
+2. **Create and activate a virtual environment:**
+   - **Linux / macOS:**
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
+   - **Windows:**
+     ```bash
+     python -m venv venv
+     venv\Scripts\activate
+     ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+### Running the Application
+
+Launch the Streamlit web dashboard locally:
+```bash
+streamlit run app.py
+```
+Once started, navigate to `http://localhost:8501` in your browser.
+
+---
+
+## 🌐 Deployment
+
+To deploy MedVision to Streamlit Community Cloud:
+
+1. Push your code to your GitHub repository.
+2. Sign in to Streamlit Community Cloud.
+3. Select your repository (`Priyanshu98156/MedVision`), main branch, and specify `app.py` as the entry file.
+4. Click **Deploy**.
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Add Grad-CAM (Gradient-weighted Class Activation Mapping) heatmaps for visual explainability.
+- [ ] Integrate multi-planar MRI scan support (Axial, Coronal, Sagittal).
+- [ ] Implement DICOM (`.dcm`) image reading support for hospital PACS integration.
+- [ ] Add PDF export functionality for generated diagnostic summaries.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/NewFeature`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature/NewFeature`).
+5. Open a Pull Request.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📬 Contact & Author
+
+**Priyanshu Gupta**
+
+- GitHub: [@Priyanshu98156](https://github.com/Priyanshu98156)
+- LinkedIn: [Priyanshu Gupta](https://linkedin.com/in/priyanshu98156)
+- Email: pgupta98156@gmail.com
